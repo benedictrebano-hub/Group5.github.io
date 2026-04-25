@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Benedict Rebano | BSECE 4B</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #0a0f1e 0%, #0c1222 100%);
+            font-family: 'Inter', 'Space Grotesk', sans-serif;
+            color: #eef5ff;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #10182f;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3b4b7a;
+            border-radius: 10px;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 4rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(90, 120, 200, 0.2);
+        }
+        .hero-text {
+            flex: 1;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(0, 255, 255, 0.12);
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #8efff1;
+            border: 1px solid rgba(0, 230, 230, 0.3);
+            margin-bottom: 1rem;
+        }
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #FFFFFF, #9bbaff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+        .hero-tagline {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #b9ceff;
+            margin-bottom: 1rem;
+        }
+        .intro-desc {
+            font-size: 1rem;
+            color: #cad2f0;
+            max-width: 550px;
+            margin: 1.2rem 0 1.5rem;
+        }
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.7rem 1.6rem;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+        .btn-primary {
+            background: #2a3f8c;
+            color: white;
+            border: 1px solid #4a6bcb;
+            box-shadow: 0 4px 12px rgba(0, 30, 100, 0.3);
+        }
+        .btn-primary:hover {
+            background: #3f5bbf;
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            border: 1px solid #6783cf;
+            color: #d6e3ff;
+            background: rgba(25, 40, 75, 0.5);
+        }
+        .btn-outline:hover {
+            background: rgba(80, 120, 220, 0.2);
+            transform: translateY(-2px);
+        }
+        .hero-gif {
+            text-align: center;
+        }
+        .cs2-gif {
+            width: 320px;
+            max-width: 100%;
+            border-radius: 1.5rem;
+            border: 2px solid #4a6bcb;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            background: #0a0f1a;
+            transition: transform 0.2s;
+        }
+        .cs2-gif:hover {
+            transform: scale(1.02);
+            border-color: #8aacff;
+        }
+        .gif-caption {
+            font-size: 0.7rem;
+            color: #8c9ed9;
+            margin-top: 0.5rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            justify-content: center;
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #8aacff;
+        }
+        .stat-label {
+            font-size: 0.7rem;
+            color: #8c9ed9;
+        }
+
+        .section {
+            margin-bottom: 3.5rem;
+        }
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-left: 4px solid #4c7cff;
+            padding-left: 1.2rem;
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.8rem;
+        }
+        .card {
+            background: rgba(18, 28, 48, 0.6);
+            backdrop-filter: blur(2px);
+            border-radius: 1.8rem;
+            padding: 1.8rem;
+            border: 1px solid rgba(70, 110, 180, 0.3);
+            transition: all 0.2s ease;
+        }
+        .card:hover {
+            border-color: #5d86e2;
+            transform: translateY(-4px);
+            background: rgba(25, 38, 65, 0.7);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+        .card p {
+            color: #cfdeff;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        .game-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 1rem;
+        }
+        .game-badge {
+            background: linear-gradient(135deg, #1e2848, #162040);
+            border-radius: 50px;
+            padding: 6px 14px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 0.5px solid #3d5aa0;
+        }
+        .tag-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 1rem;
+        }
+        .tag {
+            background: #18203c;
+            padding: 0.25rem 1rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #bdd4ff;
+        }
+        
+        .skill-item {
+            margin: 1rem 0;
+        }
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.3rem;
+            font-size: 0.85rem;
+        }
+        .progress-bar {
+            background: #0a0f1a;
+            border-radius: 10px;
+            height: 8px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            background: linear-gradient(90deg, #4c7cff, #8aacff);
+            border-radius: 10px;
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .game-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .game-item {
+            background: rgba(10, 18, 30, 0.6);
+            border-radius: 1.2rem;
+            padding: 0.8rem;
+            text-align: center;
+            transition: all 0.2s;
+            border: 1px solid #2a3f5e;
+        }
+        .game-item:hover {
+            transform: scale(1.02);
+            border-color: #5d86e2;
+        }
+        .game-icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.3rem;
+        }
+        .game-name {
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .game-desc {
+            font-size: 0.65rem;
+            color: #8c9ed9;
+            margin-top: 0.2rem;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #1f2a48;
+            color: #8c9ed9;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 700px) {
+            .hero h1 { font-size: 2.2rem; }
+            .section-title { font-size: 1.5rem; }
+            .cs2-gif { width: 220px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Hero Section with YOUR zooga-cs.gif -->
+    <div class="hero">
+        <div class="hero-text">
+            <div class="badge">⚡ BSECE 4B · Electronics & Gaming</div>
+            <h1>Benedict Rebano</h1>
+            <div class="hero-tagline">🎯 CS2 Grinder · 📖 Story-Driven Gamer · 🔌 Future Electronics Engineer</div>
+            <p class="intro-desc">
+                I'm Benedict, a 4th-year Electronics Engineering student who loves circuits and microcontrollers. 
+                When I'm not studying, I'm grinding <strong>CS2</strong>, playing <strong>Valorant</strong> or <strong>Crossfire</strong>, 
+                or getting lost in story-rich games like <strong>RDR2</strong>, <strong>Metro</strong>, <strong>Call of Duty</strong>, and <strong>Left 4 Dead</strong>.
+            </p>
+            <div class="btn-group">
+                <button class="btn btn-primary" id="greetBtn">👋 Say hello</button>
+                <button class="btn btn-outline" id="gameBtn">🎮 Random game rec</button>
+            </div>
+        </div>
+        <div class="hero-gif">
+            <!-- YOUR LOCAL GIF FILE -->
+            <img src="zooga-cs.gif" alt="CS2 Dance" class="cs2-gif">
+            <div class="gif-caption">🎬 Me after winning a CS2 match</div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">4th Year</div>
+                    <div class="stat-label">BSECE</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Games Finished</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">FPS</div>
+                    <div class="stat-label">Main Genre</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Electronics Section -->
+    <div class="section">
+        <div class="section-title">
+            <span>🔌⚡</span> 
+            Electronics & Engineering Skills
+        </div>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-icon">🔧</div>
+                <h3>Circuit Design & Embedded</h3>
+                <p>Building electronics projects, working with microcontrollers, and understanding how hardware behaves.</p>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Arduino/ESP32</span><span>75%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 75%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>PCB Design</span><span>60%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 60%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Circuit Analysis</span><span>70%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 70%"></div></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-icon">📡</div>
+                <h3>Programming & Tools</h3>
+                <p>Learning to bridge hardware and software for IoT and automation projects.</p>
+                <div class="skill-item">
+                    <div class="skill-name"><span>C/C++ (Embedded)</span><span>65%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 65%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Python</span><span>50%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 50%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>MATLAB</span><span>55%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 55%"></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gaming Section -->
+    <div class="section">
+        <div class="section-title">
+            <span>🎮</span> 
+            Games I'm Into
+        </div>
+        
+        <div class="card" style="margin-bottom: 1.5rem;">
+            <div class="card-icon">🎯⚔️</div>
+            <h3>Competitive FPS — The Grind</h3>
+            <p>I love the adrenaline of ranked matches. Right now, <strong>CS2</strong> is my main game, but I also play <strong>Valorant</strong> and <strong>Crossfire</strong>.</p>
+            <div class="game-showcase">
+                <div class="game-item">
+                    <div class="game-icon">🔫</div>
+                    <div class="game-name">CS2 (Main)</div>
+                    <div class="game-desc">Tactical shooter, pure skill</div>
+                </div>
+                <div class="game-item">
+                    <div class="game-icon">✨</div>
+                    <div class="game-name">Valorant</div>
+                    <div class="game-desc">Agent abilities + gunplay</div>
+                </div>
+                <div class="game-item">
+                    <div class="game-icon">🇨🇳</div>
+                    <div class="game-name">Crossfire</div>
+                    <div class="game-desc">Classic, fast-paced</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">📖🌍</div>
+            <h3>Story-Driven & Action</h3>
+            <p>When I want to relax, I play games with great narratives and atmosphere.</p>
+            <div class="game-showcase">
+                <div class="game-item">
+                    <div class="game-icon">🤠</div>
+                    <div class="game-name">RDR2</div>
+                    <div class="game-desc">Masterpiece storytelling</div>
+                </div>
+                <div class="game-item">
+                    <div class="game-icon">☢️</div>
+                    <div class="game-name">Metro Series</div>
+                    <div class="game-desc">Tense, immersive, dark</div>
+                </div>
+                <div class="game-item">
+                    <div class="game-icon">💥</div>
+                    <div class="game-name">Call of Duty</div>
+                    <div class="game-desc">Cinematic campaigns</div>
+                </div>
+                <div class="game-item">
+                    <div class="game-icon">🧟</div>
+                    <div class="game-name">Left 4 Dead</div>
+                    <div class="game-desc">Classic co-op chaos</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Currently Playing -->
+    <div class="section">
+        <div class="section-title">
+            <span>🕹️</span> 
+            Currently Playing
+        </div>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-icon">🎮</div>
+                <h3>Right Now</h3>
+                <p><strong>Main game:</strong> CS2 — grinding ranked matches daily.</p>
+                <p><strong>Side games:</strong> Replaying Metro Exodus, some Left 4 Dead 2 with friends.</p>
+                <div class="tag-group">
+                    <span class="tag">#CS2Grind</span>
+                    <span class="tag">#MetroExodus</span>
+                    <span class="tag">#L4D2</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-icon">📋</div>
+                <h3>On My List</h3>
+                <div class="game-list">
+                    <span class="game-badge">Cyberpunk 2077 (replay)</span>
+                    <span class="game-badge">Stalker 2</span>
+                    <span class="game-badge">The Last of Us</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        <p>⚡ Benedict Rebano · BSECE 4B · Electronics & Gaming ⚡</p>
+        <p style="margin-top: 0.3rem; font-size: 0.8rem;">CS2 · Valorant · Crossfire · RDR2 · Metro · COD · Left 4 Dead</p>
+        <p style="margin-top: 0.5rem; font-size: 0.7rem; opacity: 0.6;">"Grind competitive, enjoy the story"</p>
+    </div>
+</div>
+
+<script>
+    const greetBtn = document.getElementById('greetBtn');
+    const gameBtn = document.getElementById('gameBtn');
+
+    const myGamesList = [
+        "CS2", "Valorant", "Crossfire", 
+        "Red Dead Redemption 2", "Metro Exodus", "Metro 2033", "Metro Last Light",
+        "Call of Duty: Modern Warfare 2", "Call of Duty: Black Ops",
+        "Left 4 Dead 2"
+    ];
+
+    if (greetBtn) {
+        greetBtn.addEventListener('click', () => {
+            alert("👋 Hey! Thanks for checking out my page.\n\n— Benedict Rebano, BSECE 4B");
+        });
+    }
+
+    if (gameBtn) {
+        gameBtn.addEventListener('click', () => {
+            const randomGame = myGamesList[Math.floor(Math.random() * myGamesList.length)];
+            let message = `🎮 You should try: ${randomGame}\n\n`;
+            if (randomGame === "CS2") message += "The best tactical shooter right now. Great for competitive grind.";
+            else if (randomGame === "Red Dead Redemption 2") message += "Amazing story and open world. A masterpiece.";
+            else if (randomGame.includes("Metro")) message += "Incredible atmosphere and tension. Perfect for story lovers.";
+            else if (randomGame.includes("Left 4 Dead")) message += "Classic co-op zombie shooter. Super fun with friends.";
+            else message += "One of my personal favorites. Give it a shot!";
+            alert(message);
+        });
+    }
+
+    // Animate progress bars
+    window.addEventListener('load', () => {
+        const fills = document.querySelectorAll('.progress-fill');
+        fills.forEach(fill => {
+            const width = fill.style.width;
+            fill.style.width = '0%';
+            setTimeout(() => {
+                fill.style.width = width;
+            }, 100);
+        });
+    });
+</script>
+</body>
+</html>

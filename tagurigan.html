@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Romelyn Tagurigan | Electronics Engineering Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0f1a;
+            font-family: 'Inter', 'Segoe UI', 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #eef5ff;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+            position: relative;
+        }
+
+        /* PCB Trace Background */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(90deg, 
+                    rgba(0, 255, 200, 0.03) 0px, 
+                    rgba(0, 255, 200, 0.03) 2px,
+                    transparent 2px,
+                    transparent 8px),
+                repeating-linear-gradient(0deg, 
+                    rgba(0, 212, 180, 0.03) 0px,
+                    rgba(0, 212, 180, 0.03) 2px,
+                    transparent 2px,
+                    transparent 12px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body::after {
+            content: "⚡";
+            font-size: 280px;
+            position: fixed;
+            bottom: -80px;
+            right: -80px;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 0;
+            transform: rotate(15deg);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1.5rem 1.8rem 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Navigation */
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding: 1rem 1.8rem;
+            margin-bottom: 2rem;
+            background: rgba(2, 10, 18, 0.7);
+            backdrop-filter: blur(12px);
+            border-radius: 3rem;
+            border: 1px solid rgba(45, 212, 191, 0.4);
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            background: linear-gradient(130deg, #c4fff0, #2dd4bf);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            font-family: monospace;
+        }
+        .logo span {
+            font-size: 0.9rem;
+            background: none;
+            color: #6ee7d6;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: #ccf4ff;
+            text-decoration: none;
+            font-weight: 500;
+            font-family: monospace;
+            font-size: 0.95rem;
+            transition: 0.2s;
+            border-bottom: 1px solid transparent;
+            padding-bottom: 4px;
+        }
+        .nav-links a:hover {
+            color: #2dd4bf;
+            border-bottom-color: #2dd4bf;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-bottom: 4rem;
+            padding: 2rem 2.2rem;
+            background: rgba(5, 15, 24, 0.6);
+            backdrop-filter: blur(6px);
+            border-radius: 2.5rem;
+            border: 1px solid rgba(45,212,191,0.4);
+        }
+        .hero-text {
+            flex: 2;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #0b2429;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-family: monospace;
+            color: #7effe6;
+            margin-bottom: 1rem;
+            border-left: 3px solid #2dd4bf;
+        }
+        .led-pulse {
+            width: 8px;
+            height: 8px;
+            background: #2dd4bf;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 8px cyan;
+            animation: pulse 1.2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 0.4; transform: scale(0.8);}
+            100% { opacity: 1; transform: scale(1.2);}
+        }
+        .hero-text h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #ffffff, #a2f5e8);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .hero-text h1 span {
+            color: #2dd4bf;
+            background: none;
+           -webkit-background-clip: text;
+background-clip: text;
+        }
+        .hero-text p {
+            font-size: 1rem;
+            margin: 1rem 0 1.5rem;
+            color: #cae9f5;
+            max-width: 550px;
+        }
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            background: transparent;
+            border: 1.5px solid #2dd4bf;
+            padding: 0.6rem 1.4rem;
+            border-radius: 40px;
+            font-weight: 600;
+            transition: 0.2s;
+            text-decoration: none;
+            color: #2dd4bf;
+            font-family: monospace;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background: rgba(31, 94, 90, 0.19);
+            backdrop-filter: blur(4px);
+        }
+        .btn-primary:hover {
+            background: #2dd4bf;
+            color: #041016;
+            box-shadow: 0 0 12px #2dd4bf;
+            border-color: #2dd4bf;
+        }
+        .hero-icon {
+            flex: 1;
+            text-align: center;
+            font-size: 7rem;
+            filter: drop-shadow(0 0 12px rgba(45,212,191,0.6));
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 1.9rem;
+            margin: 2rem 0 1.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-left: 5px solid #2dd4bf;
+            padding-left: 1rem;
+            font-weight: 600;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        .skill-item {
+            background: rgba(12, 28, 36, 0.7);
+            backdrop-filter: blur(4px);
+            border-radius: 1.5rem;
+            padding: 1.2rem 1rem;
+            width: 150px;
+            text-align: center;
+            border: 1px solid #2a5f5a;
+            transition: 0.2s;
+        }
+        .skill-item:hover {
+            transform: translateY(-5px);
+            border-color: #2dd4bf;
+        }
+        .skill-icon {
+            font-size: 2.4rem;
+            margin-bottom: 0.5rem;
+        }
+        .skill-item h4 {
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+        .skill-item p {
+            font-size: 0.7rem;
+            color: #aad4e0;
+            font-family: monospace;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+        .proj-card {
+            background: linear-gradient(145deg, #0c1825, #05101a);
+            border-radius: 1.6rem;
+            width: 280px;
+            overflow: hidden;
+            transition: 0.25s;
+            border: 1px solid #2a4a55;
+        }
+        .proj-card:hover {
+            transform: translateY(-6px);
+            border-color: #2dd4bf;
+        }
+        .proj-img {
+            text-align: center;
+            font-size: 3.6rem;
+            padding: 1.5rem 0;
+            background: #07161f;
+            border-bottom: 1px solid #1c4d55;
+        }
+        .proj-info {
+            padding: 1.3rem;
+        }
+        .proj-info h3 {
+            font-size: 1.25rem;
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        .proj-info p {
+            font-size: 0.85rem;
+            color: #bfe2ef;
+            margin-bottom: 1rem;
+        }
+        .tech-badge {
+            background: #0b2a2c;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-family: monospace;
+            color: #6ad4c5;
+            margin-right: 0.5rem;
+            display: inline-block;
+            margin-bottom: 0.3rem;
+        }
+
+        /* About & Contact */
+        .about-contact-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0 1rem;
+        }
+        .about-box {
+            flex: 2;
+            background: rgba(3, 12, 20, 0.6);
+            backdrop-filter: blur(5px);
+            padding: 1.8rem;
+            border-radius: 2rem;
+            border: 1px solid #2c6b63;
+        }
+        .contact-box {
+            flex: 1.2;
+            background: rgba(3, 12, 20, 0.6);
+            backdrop-filter: blur(5px);
+            padding: 1.8rem;
+            border-radius: 2rem;
+            border: 1px solid #2c6b63;
+            text-align: center;
+        }
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin: 1rem 0;
+            font-family: monospace;
+            flex-wrap: wrap;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.3rem;
+            margin-top: 1.4rem;
+            flex-wrap: wrap;
+        }
+        .social-icons a {
+            color: #b5f0e8;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .social-icons a:hover {
+            color: #2dd4bf;
+        }
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid rgba(45,212,191,0.3);
+            font-size: 0.75rem;
+            font-family: monospace;
+        }
+
+        .scope-line {
+            height: 2px;
+            background: repeating-linear-gradient(90deg, #2dd4bf, #2dd4bf 6px, transparent 6px, transparent 12px);
+            width: 80%;
+            margin: 1rem auto;
+        }
+
+        @media (max-width: 780px) {
+            .hero-text h1 { font-size: 2rem; }
+            .hero-icon { font-size: 4rem; }
+            .container { padding: 1rem; }
+            .nav-bar { flex-direction: column; align-items: flex-start; }
+            .section-title { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Navigation -->
+    <div class="nav-bar">
+        <div class="logo">
+            ⚡ R.T. <span>| electron studio</span>
+        </div>
+        <div class="nav-links">
+            <a href="#home">HOME</a>
+            <a href="#projects">PROJECTS</a>
+            <a href="#skills">SKILLS</a>
+            <a href="#connect">CONNECT</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div id="home">
+        <div class="hero">
+            <div class="hero-text">
+                <div class="hero-badge">
+                    <span class="led-pulse"></span> ISAT U · ELECTRONICS ENGINEERING
+                </div>
+                <h1>Romelyn <span>Tagurigan</span></h1>
+                <p>Passionate Electronics Engineering student at Iloilo Science and Technology University. Designing PCBs, crafting embedded systems, and shaping the future of smart electronics — one circuit at a time.</p>
+                <div class="btn-group">
+                    <a href="#projects" class="btn btn-primary">🔍 See My Work</a>
+                    <a href="#connect" class="btn">📫 Get In Touch</a>
+                </div>
+            </div>
+            <div class="hero-icon">
+                🔌🪫💡
+            </div>
+        </div>
+    </div>
+
+    <!-- Skills Section -->
+    <div id="skills">
+        <div class="section-title">
+            <span>🛠️</span> Electronics Toolset & Expertise
+        </div>
+        <div class="skills-grid">
+            <div class="skill-item">
+                <div class="skill-icon">📟</div>
+                <h4>PCB Design</h4>
+                <p>Altium, KiCad, Eagle</p>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">⚡</div>
+                <h4>Embedded C</h4>
+                <p>Arduino, STM32, ESP</p>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">📡</div>
+                <h4>IoT & Sensors</h4>
+                <p>MQTT, LoRa, BLE</p>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">🔌</div>
+                <h4>Circuit Simulation</h4>
+                <p>LTspice, Proteus</p>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">🔬</div>
+                <h4>Oscilloscopes</h4>
+                <p>Debug & Measurement</p>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">🧰</div>
+                <h4>Soldering & Rework</h4>
+                <p>SMD / Through-hole</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Projects Section -->
+    <div id="projects">
+        <div class="section-title">
+            <span>🔨</span> Featured Electronics Projects
+        </div>
+        <div class="projects-grid">
+            <div class="proj-card">
+                <div class="proj-img">🌱💧</div>
+                <div class="proj-info">
+                    <h3>Smart Agri Sensor Node</h3>
+                    <p>Wireless soil moisture & temp monitoring system with LoRaWAN transmission. PCB designed with KiCad and low-power optimization.</p>
+                    <div><span class="tech-badge">ESP32</span><span class="tech-badge">LoRa</span><span class="tech-badge">SHT30</span></div>
+                </div>
+            </div>
+            <div class="proj-card">
+                <div class="proj-img">🎛️🎚️</div>
+                <div class="proj-info">
+                    <h3>Digital Signal Generator</h3>
+                    <p>Arduino-based DDS function generator with AD9850, custom UI via OLED. Outputs sine, square, triangle up to 20MHz.</p>
+                    <div><span class="tech-badge">DDS</span><span class="tech-badge">STM32</span><span class="tech-badge">Filter design</span></div>
+                </div>
+            </div>
+            <div class="proj-card">
+                <div class="proj-img">🚦📟</div>
+                <div class="proj-info">
+                    <h3>PCB Reflow Controller</h3>
+                    <p>DIY reflow hotplate controller with PID temperature regulation, thermocouple input and SSR driver.</p>
+                    <div><span class="tech-badge">ATmega328</span><span class="tech-badge">MAX6675</span><span class="tech-badge">PID</span></div>
+                </div>
+            </div>
+            <div class="proj-card">
+                <div class="proj-img">🧠⚡</div>
+                <div class="proj-info">
+                    <h3>Biomedical Monitor Shield</h3>
+                    <p>ECG & heart rate front-end with AD8232, onboard filtering. Designed as final year capstone project.</p>
+                    <div><span class="tech-badge">Analog Frontend</span><span class="tech-badge">BLE</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About & Contact -->
+    <div id="connect">
+        <div class="section-title">
+            <span>📡</span> About Romelyn & Connect
+        </div>
+        <div class="about-contact-wrap">
+            <div class="about-box">
+                <h3 style="color: #8effe6; margin-bottom: 0.8rem;">⚡ Future Electronics Engineer</h3>
+                <p>I'm Romelyn Tagurigan, a 4th-year Electronics Engineering student at <strong>Iloilo Science and Technology University (ISAT U)</strong>. My fascination with electronics started when I first held a soldering iron — since then, I've dedicated myself to learning circuit design, embedded programming, and hardware debugging.</p>
+                <p style="margin-top: 0.8rem;">I have experience leading university workshops about PCB manufacturing and actively contribute to open-source hardware communities. My goal is to design sustainable and innovative electronic systems that solve real-world problems, from smart agriculture to assistive technology.</p>
+                <div class="scope-line"></div>
+                <p style="font-family: monospace;">🔧 Currently working on: Wearable fall detection device & solar-powered data logger.</p>
+            </div>
+            <div class="contact-box">
+                <h3 style="color: #7effe6;">📫 Contact Information</h3>
+                <div class="contact-detail">
+                    <span>📧</span> romelyn.tagurigan@isatu.edu.ph
+                </div>
+                <div class="contact-detail">
+                    <span>📱</span> +63 912 3456 789
+                </div>
+                <div class="contact-detail">
+                    <span>📍</span> Iloilo City, Philippines
+                </div>
+                <div class="social-icons">
+                    <a href="#">🔗 LinkedIn</a>
+                    <a href="#">🐙 GitHub</a>
+                    <a href="#">📘 FB Portfolio</a>
+                </div>
+                <div style="margin-top: 1.5rem; border-top: 1px dashed #2c8a7a; padding-top: 1rem;">
+                    <span class="led-pulse" style="display: inline-block; margin-right: 6px;"></span> Available for internships & collaboration
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div style="letter-spacing: 1.5px; font-size: 0.7rem;">⫸  DESIGNED WITH SEMICONDUCTOR PASSION  ⫷  PCB ROUTING  ⫸  EMBEDDED SYSTEMS  ⫷</div>
+        <div style="margin: 0.8rem auto; width: 70px; height: 2px; background: #2dd4bf; border-radius: 4px;"></div>
+        <div>© 2025 Romelyn Tagurigan — ISAT U Electronics Engineering • All circuits inspired</div>
+        <div style="margin-top: 0.3rem;">⚡ "Building tomorrow's hardware, one trace at a time."</div>
+    </footer>
+</div>
+
+<script>
+    (function() {
+        console.log("%c🔌 ROMELYN TAGURIGAN | ELECTRONICS ENGINEERING STUDENT @ ISAT U 🔌", "color: #2dd4bf; font-size: 14px; font-family: monospace;");
+        
+        // Smooth scrolling for nav links
+        const navLinks = document.querySelectorAll('.nav-links a, .btn');
+        navLinks.forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
+                const hash = this.getAttribute('href');
+                if (hash && hash.startsWith('#')) {
+                    const targetId = hash.substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+            });
+        });
+    })();
+</script>
+</body>
+</html>

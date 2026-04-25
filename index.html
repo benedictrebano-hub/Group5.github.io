@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GROUP5 | BSECE 4B Electronics Engineering Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0f1e 0%, #0e1a2a 100%);
+            font-family: 'Inter', sans-serif;
+            color: #eef5ff;
+            min-height: 100vh;
+            padding: 2rem 1.5rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 1rem;
+            background: rgba(18, 28, 48, 0.6);
+            border-radius: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(76, 124, 255, 0.3);
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #ffffff, #8aacff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .header .subtitle {
+            color: #a8c0ff;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(0, 255, 255, 0.15);
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            color: #8efff1;
+            margin-bottom: 1rem;
+        }
+
+        .group-name {
+            display: inline-block;
+            background: rgba(76, 124, 255, 0.2);
+            border: 1px solid #4c7cff;
+            border-radius: 50px;
+            padding: 0.5rem 1.8rem;
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #8aacff;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .member-card {
+            background: rgba(15, 25, 45, 0.8);
+            backdrop-filter: blur(5px);
+            border-radius: 1.8rem;
+            padding: 1.8rem 1.5rem;
+            text-align: center;
+            border: 1px solid rgba(70, 110, 200, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .member-card:hover {
+            transform: translateY(-5px);
+            border-color: #5d86e2;
+            background: rgba(25, 40, 80, 0.9);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .member-avatar {
+            font-size: 3.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .member-card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .member-course {
+            color: #8aacff;
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+            font-size: 0.85rem;
+        }
+
+        .member-desc {
+            color: #cad2f0;
+            font-size: 0.9rem;
+            margin: 0.8rem 0;
+            padding: 0 0.3rem;
+            line-height: 1.5;
+        }
+
+        .view-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.6rem 1.5rem;
+            background: #2a3f8c;
+            color: white;
+            text-decoration: none;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+            border: 1px solid #4a6bcb;
+            cursor: pointer;
+        }
+
+        .view-btn:hover {
+            background: #3f5bbf;
+            transform: scale(1.02);
+        }
+
+        .ece-tag {
+            display: inline-block;
+            background: rgba(76, 124, 255, 0.15);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            color: #8aacff;
+            margin-top: 0.5rem;
+        }
+
+        .info-box {
+            background: rgba(10, 18, 30, 0.7);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border-left: 4px solid #4c7cff;
+        }
+
+        .info-box h3 {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-box ul {
+            margin-left: 1.5rem;
+            color: #b8cbff;
+        }
+
+        .info-box li {
+            margin: 0.4rem 0;
+        }
+
+        .file-path {
+            background: #0a0f1a;
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: #8efff1;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #1f2a48;
+            color: #8c9ed9;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 700px) {
+            .header h1 { font-size: 2rem; }
+            .team-grid { gap: 1.2rem; }
+            .member-card h2 { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="badge">👥 BSECE 4B · Electronics Engineering</div>
+            <h1>⚡ Electronics Engineering Portfolio ⚡</h1>
+            <div class="subtitle">Future engineers · Circuit builders · Problem solvers</div>
+            <div class="group-name">🔧 GROUP 5 🔧</div>
+        </div>
+
+        <div class="team-grid" id="teamGrid">
+            <!-- Palma -->
+            <div class="member-card" data-page="palma.html">
+                <div class="member-avatar">🔌📐</div>
+                <h2>Palma</h2>
+                <div class="member-course">BSECE 4B</div>
+                <div class="member-desc">
+                    Interested in circuit analysis and embedded systems. Enjoys working on microcontroller-based projects.
+                </div>
+                <div class="ece-tag">⚡ Circuit Design · Embedded Systems</div>
+                <button class="view-btn" data-page="palma.html">View Page →</button>
+            </div>
+
+            <!-- Ramos -->
+            <div class="member-card" data-page="ramos.html">
+                <div class="member-avatar">📡🔋</div>
+                <h2>Ramos</h2>
+                <div class="member-course">BSECE 4B</div>
+                <div class="member-desc">
+                    Passionate about telecommunications and IoT. Focuses on wireless communication systems and signal processing.
+                </div>
+                <div class="ece-tag">⚡ Telecom · IoT · Signal Processing</div>
+                <button class="view-btn" data-page="ramos.html">View Page →</button>
+            </div>
+
+            <!-- Rebano -->
+            <div class="member-card" data-page="rebano.html">
+                <div class="member-avatar">🎮🔧</div>
+                <h2>Rebano</h2>
+                <div class="member-course">BSECE 4B</div>
+                <div class="member-desc">
+                    Enjoys electronics — from circuit design to microcontrollers. Also loves competitive and story-driven games.
+                </div>
+                <div class="ece-tag">⚡ Electronics · Embedded Systems · PC Gaming</div>
+                <button class="view-btn" data-page="rebano.html">View Page →</button>
+            </div>
+
+            <!-- Nobleza -->
+            <div class="member-card" data-page="nobleza.html">
+                <div class="member-avatar">🔬⚙️</div>
+                <h2>Nobleza</h2>
+                <div class="member-course">BSECE 4B</div>
+                <div class="member-desc">
+                    Focuses on control systems and robotics. Interested in automation and feedback control loops.
+                </div>
+                <div class="ece-tag">⚡ Control Systems · Robotics · Automation</div>
+                <button class="view-btn" data-page="nobleza.html">View Page →</button>
+            </div>
+
+            <!-- Parreño -->
+            <div class="member-card" data-page="parreno.html">
+                <div class="member-avatar">📊🔌</div>
+                <h2>Parreño</h2>
+                <div class="member-course">BSECE 4B</div>
+                <div class="member-desc">
+                    Specializes in power systems and analog electronics. Interested in renewable energy and analog circuit design.
+                </div>
+                <div class="ece-tag">⚡ Power Systems · Analog Circuits · Renewable Energy</div>
+                <button class="view-btn" data-page="parreno.html">View Page →</button>
+            </div>
+
+            <!-- Tagurigan -->
+            <div class="member-card" data-page="tagurigan.html">
+                <div class="member-avatar">🔬💡</div>
+                <h2>Tagurigan</h2>
+                <div class="member-course">BSECE 4B · ISAT U</div>
+                <div class="member-desc">
+                    Passionate Electronics Engineering student specializing in PCB design, embedded systems, and hardware debugging.
+                </div>
+                <div class="ece-tag">⚡ PCB Design · Embedded C · IoT Sensors</div>
+                <button class="view-btn" data-page="tagurigan.html">View Page →</button>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>📁 About GROUP 5 · BSECE 4B</h3>
+            <ul>
+                <li>We are <strong>Electronics Engineering students</strong> passionate about circuits, signals, and embedded systems.</li>
+                <li>Each member has their own specialization within ECE.</li>
+                <li>Click on any card or the "View Page" button to view each member's individual webpage.</li>
+            </ul>
+        </div>
+
+        <div class="info-box" style="border-left-color: #ffa759;">
+            <h3>📁 GROUP 5 Members & Files</h3>
+            <ul>
+                <li><span class="file-path">palma.html</span> — Palma</li>
+                <li><span class="file-path">ramos.html</span> — Ramos</li>
+                <li><span class="file-path">rebano.html</span> — Rebano</li>
+                <li><span class="file-path">nobleza.html</span> — Nobleza</li>
+                <li><span class="file-path">parreno.html</span> — Parreño</li>
+                <li><span class="file-path">tagurigan.html</span> — Tagurigan</li>
+                <li><span class="file-path">index.html</span> — Main hub (this file)</li>
+            </ul>
+            <p style="margin-top: 12px; color: #aac8ff;">✅ Make sure all HTML files are in the same folder for the links to work.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>⚡ GROUP 5 · BSECE 4B · Electronics Engineering · Future Innovators ⚡</p>
+        <p style="margin-top: 0.4rem;">Circuits · Signals · Embedded Systems · Power · Telecom · Robotics · PCB Design</p>
+    </footer>
+
+    <script>
+        // Function to navigate to a page
+        function goToPage(page) {
+            if (page) {
+                window.location.href = page;
+            } else {
+                alert('Page not found. Make sure the HTML file exists in the same folder.');
+            }
+        }
+
+        // Get all view buttons and attach click events
+        const viewButtons = document.querySelectorAll('.view-btn');
+        viewButtons.forEach(function(button) {
+            button.addEventListener('click', function(event) {
+                event.stopPropagation(); // Prevent triggering the card click
+                const page = this.getAttribute('data-page');
+                goToPage(page);
+            });
+        });
+
+        // Get all member cards and attach click events
+        const memberCards = document.querySelectorAll('.member-card');
+        memberCards.forEach(function(card) {
+            card.addEventListener('click', function(event) {
+                // Don't trigger if the click was on the button
+                if (event.target.classList && event.target.classList.contains('view-btn')) {
+                    return;
+                }
+                const page = this.getAttribute('data-page');
+                goToPage(page);
+            });
+        });
+
+        console.log('✅ GROUP 5 Hub ready! Click any card or button to view member pages.');
+        console.log('📁 Available pages: palma.html, ramos.html, rebano.html, nobleza.html, parreno.html, tagurigan.html');
+    </script>
+</body>
+</html>

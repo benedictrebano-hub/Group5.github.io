@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <style>
+      /* Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      /* Body layout */
+      body {
+        background: #f5f7fa;
+        min-height: 100vh;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+      }
+
+      /* Intro Section */
+      .intro {
+        text-align: center;
+        max-width: 800px;
+        margin-top: 40px;
+        padding: 20px;
+      }
+
+      .intro h1 {
+        font-size: 28px;
+        margin-bottom: 10px;
+        color: #333;
+      }
+
+      .intro p {
+        font-size: 16px;
+        color: #555;
+        margin-bottom: 15px;
+        line-height: 1.5;
+      }
+
+     
+    .dashboard {
+  width: 100%;
+  max-width: 900px;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column; /* 👈 stack vertically */
+  gap: 15px;
+}
+
+/* Full-width boxes */
+.box {
+  width: 100%; /* 👈 full length */
+
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: left;
+
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.box:hover {
+  transform: translateX(5px); /* slight slide effect */
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+}
+
+.box-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Main text */
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #222;
+  margin-bottom: 8px;
+}
+
+/* Secondary text */
+.desc {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+}
+    </style>
+
+    <div class="intro">
+      <h1>Harvy C. Nobleza</h1>
+      <p>
+        Bachelor in Electronics Communications Engineering
+      </p>
+
+      
+    </div>
+
+    <div class="dashboard">
+
+  <a href="population.html" class="box-link">
+    <div class="box">
+      <div class="title">About Me</div>
+      <div class="desc">
+        Hello, Nobleza, Harvy C. taking Bachelor in Electronics Communications Engineering.
+      </div>
+    </div>
+  </a>
+
+  <a href="#" class="box-link">
+    <div class="box">
+      <div class="title">Hobbies</div>
+      <div class="desc">
+        Basketball<br>
+        Watching Movies<br>
+        Volleyball
+      </div>
+    </div>
+  </a>
+
+  <a href="#" class="box-link">
+    <div class="box">
+      <div class="title">Skills</div>
+      <div class="desc">
+        None.
+      </div>
+    </div>
+  </a>
+
+  <a href="#" class="box-link">
+    <div class="box">
+      <div class="title">Status</div>
+      <div class="desc">
+        Single
+      </div>
+    </div>
+  </a>
+
+  <a href="#" class="box-link">
+    <div class="box">
+      <div class="title">Projects</div>
+      <div class="desc">
+        RC car<br>
+        FPGA Games
+      </div>
+    </div>
+  </a>
+
+</div>
+    </div>
+  </body>
+</html>
