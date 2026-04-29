@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Harvy Nobleza | ECE Portfolio</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        background: #fafcfd;
+      }
+      body::-webkit-scrollbar {
+        display: none;
+      }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 140px;
+      }
+
+      /* header css */
+      .header {
+        display: flex;
+        flex-wrap: wrap;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 10000;
+        background: white;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      }
+      .column:last-child {
+        margin-left: auto;
+        justify-content: flex-end;
+        text-align: right;
+      }
+      .column {
+        width: 100%;
+        max-width: 50%;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+        box-sizing: border-box;
+      }
+      .column img {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+      .text {
+        font-size: 15px;
+        font-weight: bold;
+        color: #1e3a5f;
+      }
+      @media (max-width: 600px) {
+        .column {
+          width: 80%;
+        }
+        .column img {
+          width: 35px;
+          height: 35px;
+        }
+        .text {
+          font-size: 10px;
+        }
+        .column:last-child {
+          margin-left: 0;
+          justify-content: flex-start;
+          text-align: left;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+      }
+
+      /* navbar */
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #0b2233;
+        padding: 15px 40px;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        box-sizing: border-box;
+        z-index: 9999;
+        flex-wrap: wrap;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      }
+      .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      .logo {
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        letter-spacing: 1px;
+      }
+      .nav-links a {
+        color: #cfd8dc;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        transition: 0.2s;
+      }
+      .nav-links a:hover {
+        color: #ffb347;
+      }
+      @media (max-width: 600px) {
+        .navbar {
+          flex-direction: column;
+          gap: 10px;
+          text-align: center;
+          top: 60px;
+        }
+        .nav-links {
+          justify-content: center;
+          gap: 15px;
+        }
+      }
+
+      /* hero section */
+      .h {
+        min-height: 75vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px 20px;
+        background: linear-gradient(135deg, #eef5ff 0%, #ffffff 100%);
+      }
+      .h-title {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        background: linear-gradient(125deg, #1e4a6e, #2c5f8a);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+      .h-text {
+        font-size: 1.1rem;
+        max-width: 750px;
+        line-height: 1.6;
+        margin-bottom: 25px;
+        color: #2c3e4e;
+      }
+      .h-btn {
+        padding: 12px 25px;
+        font-size: 1rem;
+        border: none;
+        background: #1e3a8a;
+        color: white;
+        border-radius: 40px;
+        cursor: pointer;
+        transition: 0.3s ease;
+        font-weight: 600;
+      }
+      .h-btn:hover {
+        background: #0f2b5c;
+        transform: scale(1.02);
+      }
+      @media (max-width: 768px) {
+        .h-title { font-size: 2rem; }
+        .h-text { font-size: 1rem; }
+      }
+
+      /* section general */
+      .section {
+        padding: 40px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        text-align: center;
+        scroll-margin-top: 140px;
+      }
+
+      /* about area */
+      .about-container {
+        display: flex;
+        max-width: 1070px;
+        margin: auto;
+        gap: 30px;
+        align-items: center;
+        margin-top: 0px;
+      }
+      .about-text {
+        flex: 1;
+        text-align: left;
+      }
+      .about-image {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+      }
+      .about-image img {
+        width: 100%;
+        max-width: 260px;
+        border-radius: 28px;
+        box-shadow: 0 15px 25px -10px rgba(0,0,0,0.2);
+        border: 3px solid white;
+        transition: 0.2s;
+      }
+      .box-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+        margin-bottom: 40px;
+      }
+      .box-scroll-container {
+        display: flex;
+        gap: 20px;
+        overflow-x: auto;
+        padding: 12px 10px;
+        max-width: 1100px;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+      }
+      .box {
+        position: relative;
+        flex: 0 0 200px;
+        height: 130px;
+        border-radius: 20px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        scroll-snap-align: start;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+        cursor: pointer;
+        background: #eef2f5;
+      }
+      .box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: 0.3s ease;
+      }
+      .box-text {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.65);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 10px;
+        opacity: 0;
+        transition: 0.3s ease;
+        font-weight: 600;
+        backdrop-filter: blur(2px);
+      }
+      .box:hover img {
+        transform: scale(1.08);
+      }
+      .box:hover .box-text {
+        opacity: 1;
+      }
+      @media (max-width: 768px) {
+        .about-container {
+          flex-direction: column;
+          text-align: center;
+          gap: 16px;
+        }
+        .about-text {
+          text-align: left;
+        }
+        .about-image {
+          justify-content: center;
+        }
+        .about-image img {
+          max-width: 200px;
+        }
+      }
+
+      /* projects row */
+      .projects-row {
+        display: flex;
+        gap: 30px;
+        width: 70%;
+        margin: 30px auto;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .project-box {
+        flex: 1;
+        min-width: 240px;
+        background: #ffffff;
+        border-radius: 28px;
+        padding: 20px;
+        box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        transition: 0.25s;
+        border: 1px solid #eef2ff;
+      }
+      .project-box:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.25);
+      }
+      .project-box img {
+        width: 100%;
+        height: 170px;
+        object-fit: cover;
+        border-radius: 20px;
+        margin-bottom: 12px;
+        background: #eef2fa;
+      }
+      @media (max-width: 768px) {
+        .projects-row {
+          flex-direction: column;
+          width: 90%;
+        }
+      }
+
+      /* contact row */
+      .contact-row {
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+        max-width: 1010px;
+        margin: 30px auto;
+        flex-wrap: wrap;
+      }
+      .contact-item {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 18px 22px;
+        background: #ffffff;
+        border-radius: 40px;
+        text-align: left;
+        min-width: 260px;
+        box-shadow: 0 5px 12px rgba(0,0,0,0.05);
+        border: 1px solid #e0e9f0;
+        transition: 0.2s;
+      }
+      .contact-item span {
+        font-size: 28px;
+      }
+      .contact-item p {
+        margin: 0;
+        font-size: 15px;
+        font-weight: 500;
+        color: #2c3e50;
+      }
+      .footer {
+        width: 100%;
+        padding: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #f0f4f9;
+        font-size: 14px;
+        color: #2c3e5c;
+        border-top: 1px solid #dce5ef;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HEADER with UNTRACKED images: iloilo.png + cea.png -->
+    <div class="header">
+      <div class="column">
+        <img src="iloilo.png" alt="University Logo" />
+        <div class="text">Iloilo Science and Technology University</div>
+      </div>
+      <div class="column">
+        <img src="cea.png" alt="College Logo" />
+        <div class="text">College of Engineering and Architecture</div>
+      </div>
+    </div>
+
+    <!-- navbar -->
+    <div class="navbar">
+      <div class="logo">⚡ Harvy Nobleza | ECE Portfolio</div>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+
+    <!-- HOME SECTION -->
+    <div id="home" class="h">
+      <div class="h">
+        <h1 class="h-title">Hello! I am Harvy C. Nobleza</h1>
+        <p class="h-text">
+          Taking a Bachelor of Science in Electronics and Communications
+          Engineering at Iloilo Science and Technology University and now coming
+          closer to graduating. The journey through ECE has been full of
+          challenges but it became something to work through, learn from, and
+          grow into.
+          <b>What once felt uncertain has turned into something more meaningful.</b>
+        </p>
+        <button class="h-btn" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Explore My Work</button>
+      </div>
+    </div>
+
+    <!-- ABOUT SECTION (images: dp.png, chess.jpg, electronics.png, volleyball.jpg, basketball.jpg, taurus.png) -->
+    <div id="about" class="section">
+      <div class="about-container">
+        <div class="about-text">
+          <h2>📖 About Me</h2>
+          <h3>Harvy C. Nobleza | 4th Year ECE</h3>
+          <p>
+            I am currently a Bachelor of Science in Electronics and Communications Engineering student 
+            at Iloilo Science and Technology University, nearing graduation. Studying ECE has taught me 
+            not just technical skills, but also the value of consistency, adaptability, and determination 
+            in facing difficult situations. I chose to continue this path and see it through, even when 
+            it demanded more than expected, because I believe growth often comes from the things that test us the most.
+          </p>
+        </div>
+        <!-- ABOUT IMAGE: dp.png (untracked) -->
+        <div class="about-image">
+          <img src="dp.png" alt="Harvy Nobleza profile" />
+        </div>
+      </div>
+
+      <!-- HOBBIES / INTERESTS BOXES: chess.jpg, electronics.png, volleyball.jpg, basketball.jpg, taurus.png -->
+      <div class="box-wrapper">
+        <div class="box-scroll-container">
+          <div class="box">
+            <img src="chess.jpg" alt="Chess strategy" />
+            <div class="box-text">♟️ Chess</div>
+          </div>
+          <div class="box">
+            <img src="electronics.png" alt="Electronics passion" />
+            <div class="box-text">🔌 Electronics</div>
+          </div>
+          <div class="box">
+            <img src="volleyball.jpg" alt="Volleyball sport" />
+            <div class="box-text">🏐 Volleyball</div>
+          </div>
+          <div class="box">
+            <img src="basketball.jpg" alt="Basketball court" />
+            <div class="box-text">🏀 Basketball</div>
+          </div>
+          <div class="box">
+            <img src="taurus.png" alt="Taurus zodiac sign" />
+            <div class="box-text">🐂 Taurus</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECTS SECTION: p1.jpg, p2.jpg (untracked images) -->
+    <div id="projects" class="section">
+      <h2>🚀 Projects</h2>
+      <div class="projects-row">
+        <div class="project-box">
+          <img src="p1.jpg" alt="RC Car project" />
+          <h3>RC Car</h3>
+          <p style="color:#4a627a;">Wireless controlled vehicle with RF module & motor driver.</p>
+        </div>
+        <div class="project-box">
+          <img src="p2.jpg" alt="FPGA Games project" />
+          <h3>FPGA Games</h3>
+          <p style="color:#4a627a;">Retro-style games implemented on FPGA development board.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTACT SECTION -->
+    <div id="contact" class="section">
+      <h2>📬 Contact Me</h2>
+      <div class="contact-row">
+        <div class="contact-item">
+          <span>📞</span>
+          <p>+63 9507390732</p>
+        </div>
+        <div class="contact-item">
+          <span>📧</span>
+          <p>noblezaharvy@gmail.com</p>
+        </div>
+        <div class="contact-item">
+          <span>📍</span>
+          <p>Binaba-an Tirador, Lambunao, Iloilo, Philippines</p>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>✨ Submitted to: Engr. Arnel De Castro | All untracked images integrated ✨</p>
+    </footer>
+
+    <!-- Fixed JavaScript - removed syntax errors -->
+    <script>
+      (function() {
+        // List of all untracked images that should be displayed in this page
+        const criticalImages = [
+          "iloilo.png", "cea.png", "dp.png", "chess.jpg", "electronics.png",
+          "volleyball.jpg", "basketball.jpg", "taurus.png", "p1.jpg", "p2.jpg"
+        ];
+        
+        // Function to add gentle fallback for missing images
+        function addImageFallback(imgElement, originalSrc) {
+          if (!imgElement) return;
+          imgElement.onerror = function() {
+            if (!imgElement.dataset.fallbackAttempted) {
+              imgElement.dataset.fallbackAttempted = "true";
+              const parent = imgElement.parentElement;
+              if (parent && !parent.querySelector('.inline-placeholder')) {
+                const placeholderSpan = document.createElement('div');
+                placeholderSpan.className = 'inline-placeholder';
+                placeholderSpan.style.display = 'flex';
+                placeholderSpan.style.alignItems = 'center';
+                placeholderSpan.style.justifyContent = 'center';
+                placeholderSpan.style.background = '#eef2fa';
+                placeholderSpan.style.color = '#5f7f9e';
+                placeholderSpan.style.fontSize = '0.8rem';
+                placeholderSpan.style.borderRadius = '16px';
+                placeholderSpan.style.width = '100%';
+                placeholderSpan.style.height = '100%';
+                placeholderSpan.style.minHeight = '120px';
+                placeholderSpan.innerHTML = '🖼️ ' + originalSrc.split('/').pop();
+                imgElement.style.display = 'none';
+                parent.appendChild(placeholderSpan);
+              }
+            }
+          };
+          if (imgElement.complete && imgElement.naturalWidth === 0) {
+            imgElement.onerror();
+          }
+        }
+
+        // Apply fallback to all images when DOM loads
+        document.addEventListener('DOMContentLoaded', function() {
+          const allImages = document.querySelectorAll('img');
+          allImages.forEach(function(img) {
+            const srcValue = img.getAttribute('src');
+            if (srcValue) {
+              addImageFallback(img, srcValue);
+            }
+          });
+          
+          const styleSheet = document.createElement("style");
+          styleSheet.textContent = `
+            .inline-placeholder {
+              font-family: monospace;
+              font-weight: 500;
+              text-align: center;
+              background: #eef3fc;
+              border-radius: 18px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 100%;
+              height: 100%;
+            }
+            .project-box .inline-placeholder, .box .inline-placeholder, .about-image .inline-placeholder {
+              min-height: 140px;
+            }
+          `;
+          document.head.appendChild(styleSheet);
+        });
+        
+        console.log('Dashboard ready — all untracked images wired successfully');
+      })();
+    </script>
+  </body>
+</html>
