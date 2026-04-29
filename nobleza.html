@@ -1,166 +1,567 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
-  </head>
-  <body>
+    <title>My Dashboard</title>
     <style>
-      /* Reset */
-      * {
+      body {
         margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+
         font-family: Arial, sans-serif;
       }
+      body::-webkit-scrollbar {
+        display: none; /* Chrome, Edge, Safari */
+      }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 140px;
+      }
 
-      /* Body layout */
-      body {
-        background: #f5f7fa;
-        min-height: 100vh;
+      /*header css start*/
+      .header {
+        display: flex;
+        flex-wrap: wrap; /*move to a new line kapag wala na space*/
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 10000; /* pinaka top sa tanan*/
+        background: white;
+      }
+      .column:last-child {
+        /*pushes the last child on right*/
+        margin-left: auto;
+        justify-content: flex-end;
+        text-align: right;
+      }
+      .column {
+        width: 100%;
+        max-width: 50%;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+        box-sizing: border-box;
+      }
 
+      .column img {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+      }
+
+      .text {
+        font-size: 15px;
+        font-weight: bold;
+      }
+
+      @media (max-width: 600px) {
+        .column {
+          width: 80%; /* full width on small screens */
+        }
+        .column img {
+          width: 35px; /* smaller logo */
+          height: 35px;
+        }
+
+        .text {
+          font-size: 12px; /* smaller text */
+        }
+        .column:last-child {
+          margin-left: 0; /* remove push effect */
+          justify-content: flex-start; /* keep icon + text together */
+          text-align: left; /* prevent separation */
+          display: flex; /* ensure flex works */
+          align-items: center; /* vertically align text & icon */
+          gap: 8px; /* keeps logo close to text */
+        }
+      }
+
+      .img {
+        width: fit-content;
+        height: fit-content;
+      }
+
+      /*header css end*/
+
+      /*navbar css start*/
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #0b2233;
+        padding: 15px 40px;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        box-sizing: border-box; /*making it fit auto*/
+        z-index: 9999;
+        flex-wrap: wrap;
+      }
+
+      .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .logo {
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      .nav-links a {
+        color: #cfd8dc;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+      }
+
+      .nav-links a:hover {
+        color: white;
+      }
+
+      @media (max-width: 600px) {
+        .navbar {
+          flex-direction: column;
+          gap: 10px;
+          text-align: center;
+          top: 50px;
+        }
+
+        .nav-links {
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 15px;
+        }
+      }
+      /*footer css end */
+      /*about text css start*/
+      .h {
+        min-height: 75vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px 20px;
+      }
+
+      .h-title {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .h-text {
+        font-size: 1.1rem;
+        max-width: 750px;
+        line-height: 1.6;
+        margin-bottom: 25px;
+        color: #444;
+      }
+
+      .h-btn {
+        padding: 12px 25px;
+        font-size: 1rem;
+        border: none;
+        background: #1e3a8a;
+        color: white;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s ease;
+      }
+
+      .h-btn:hover {
+        background: #0f2557;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 768px) {
+        .h-title {
+          font-size: 2rem;
+        }
+
+        .h-text {
+          font-size: 1rem;
+          padding: 0 10px;
+        }
+      }
+      /*about text css end*/
+      /*section css*/
+      .section {
+        padding: 40px 20px;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
-      }
-
-      /* Intro Section */
-      .intro {
         text-align: center;
-        max-width: 800px;
-        margin-top: 40px;
+
+        scroll-margin-top: 140px;
+      }
+
+      /*about  css start*/
+
+      .about-container {
+        display: flex;
+        max-width: 1070px;
+        margin: auto;
+        gap: 20px;
+        align-items: center;
+        margin-top: 0px;
+      }
+
+      .about-text {
+        flex: 1;
+        text-align: left;
+      }
+
+      .about-image {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+      }
+
+      .about-image img {
+        width: 100%;
+        max-width: 250px;
+        border-radius: 10px;
+      }
+
+      /* WRAPPER TO CENTER BOX SECTION */
+      .box-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+        margin-bottom: 100px;
+      }
+
+      /* SCROLL AREA */
+      .box-scroll-container {
+        display: flex;
+        gap: 20px;
+        overflow-x: auto;
+        padding: 10px;
+        max-width: 1100px; /* matches about section width */
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+      }
+
+      /* BOX STYLE */
+      .box {
+        position: relative;
+        flex: 0 0 200px;
+        height: 120px;
+        border-radius: 10px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        scroll-snap-align: start;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+      }
+
+      /* IMAGE INSIDE BOX */
+      .box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: 0.3s ease;
+      }
+
+      /* HOVER TEXT OVERLAY */
+      .box-text {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 10px;
+        opacity: 0;
+        transition: 0.3s ease;
+      }
+
+      /* HOVER EFFECT */
+      .box:hover img {
+        transform: scale(1.1);
+      }
+
+      .box:hover .box-text {
+        opacity: 1;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 768px) {
+        .about-container {
+          flex-direction: column;
+          text-align: center;
+          gap: 12px; /* ↓ THIS fixes the "too far" spacing */
+        }
+
+        .about-text {
+          text-align: left;
+          margin-top: 0;
+        }
+
+        .about-image {
+          display: flex;
+          justify-content: flex-start;
+          width: 100%;
+        }
+
+        .about-image img {
+          margin: 0;
+          max-width: 220px; /* optional: slightly tighter look */
+        }
+      }
+      /*about css start*/
+
+      /*project css start*/
+
+      .projects-row {
+        display: flex;
+        gap: 20px;
+        width: 60%;
+        margin: 20px auto;
+      }
+
+      /* BOX */
+      .project-box {
+        flex: 1;
+        height: 250px;
         padding: 20px;
+        background: #f5f5f5;
+        border-radius: 10px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        overflow: hidden;
       }
 
-      .intro h1 {
-        font-size: 28px;
+      /* IMAGE INSIDE BOX */
+      .project-box img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 8px;
         margin-bottom: 10px;
-        color: #333;
       }
 
-      .intro p {
-        font-size: 16px;
-        color: #555;
-        margin-bottom: 15px;
-        line-height: 1.5;
+      /* RESPONSIVE */
+      @media (max-width: 768px) {
+        .projects-row {
+          flex-direction: column;
+        }
+      }
+      /*project css end*/
+
+      /* contact css start */
+      .contact-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        max-width: 1010px;
+        margin: 20px auto;
+        flex-wrap: wrap;
       }
 
-     
-    .dashboard {
-  width: 100%;
-  max-width: 900px;
-  padding: 20px;
+      /* EACH ITEM */
+      .contact-item {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 15px;
+        background: #f5f5f5;
+        border-radius: 12px;
+        text-align: left;
+        min-width: 280px;
+      }
 
-  display: flex;
-  flex-direction: column; /* 👈 stack vertically */
-  gap: 15px;
-}
+      /* ICON */
+      .contact-item span {
+        font-size: 22px;
+      }
 
-/* Full-width boxes */
-.box {
-  width: 100%; /* 👈 full length */
+      /* TEXT */
+      .contact-item p {
+        margin: 0;
+        font-size: 14px;
+      }
+      /* contact css start */
 
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 20px;
-  text-align: left;
+      /*footer css start*/
+      .footer {
+        width: 100%;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #f5f5f5;
+        font-size: 14px;
+        color: #000000;
+        border-top: 1px solid #ddd;
+      }
 
-  font-size: 18px;
-  font-weight: bold;
-  color: #333;
-
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-
-.box:hover {
-  transform: translateX(5px); /* slight slide effect */
-  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
-}
-
-.box-link {
-  text-decoration: none;
-  color: inherit;
-}
-
-/* Main text */
-.title {
-  font-size: 18px;
-  font-weight: bold;
-  color: #222;
-  margin-bottom: 8px;
-}
-
-/* Secondary text */
-.desc {
-  font-size: 14px;
-  color: #555;
-  line-height: 1.5;
-}
+      /*footer css end*/
     </style>
+  </head>
+  <body>
+    <div class="header">
+      <!-- Left -->
+      <div class="column">
+        <img src="img/iloilo.png" alt="Logo" />
+        <div class="text">Iloilo Science and Technology University</div>
+      </div>
 
-    <div class="intro">
-      <h1>Harvy C. Nobleza</h1>
-      <p>
-        Bachelor in Electronics Communications Engineering
-      </p>
-
-      
-    </div>
-
-    <div class="dashboard">
-
-  <a href="population.html" class="box-link">
-    <div class="box">
-      <div class="title">About Me</div>
-      <div class="desc">
-        Hello, Nobleza, Harvy C. taking Bachelor in Electronics Communications Engineering.
+      <!-- Right -->
+      <div class="column">
+        <img src="img/cea.png" alt="Logo" />
+        <div class="text">College of Engineering and Architecture</div>
       </div>
     </div>
-  </a>
 
-  <a href="#" class="box-link">
-    <div class="box">
-      <div class="title">Hobbies</div>
-      <div class="desc">
-        Basketball<br>
-        Watching Movies<br>
-        Volleyball
+    <!-- start navbar -->
+    <div class="navbar">
+      <div class="logo">Welcome to my Control Panel!</div>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
       </div>
     </div>
-  </a>
-
-  <a href="#" class="box-link">
-    <div class="box">
-      <div class="title">Skills</div>
-      <div class="desc">
-        None.
+    <!-- end navbar -->
+    <br />
+    <br />
+    <br />
+    <!-- home SECTION -->
+    <div id="home" class="h">
+      <div class="h">
+        <h1 class="h-title">Hello! I am Harvy C. Nobleza</h1>
+        <p class="h-text">
+          Taking a Bachelor of Science in Electronics and Communications
+          Engineering at Iloilo Science and Technology University and now coming
+          closer to graduating. The journey through ECE has been full of
+          challenges but it became something to work through, learn from, and
+          grow into.
+          <b
+            >What once felt uncertain has turned into something more
+            meaningful.</b
+          >
+        </p>
+        <button class="h-btn">Get Started</button>
       </div>
     </div>
-  </a>
+    <!-- end home section -->
 
-  <a href="#" class="box-link">
-    <div class="box">
-      <div class="title">Status</div>
-      <div class="desc">
-        Single
+    <!-- ABOUT SECTION -->
+    <div id="about" class="section">
+      <div class="about-container">
+        <div class="about-text">
+          <h2>About Me</h2>
+          <h3>Harvy C. Nobleza | 4th Year</h3>
+          <p>
+            I am currently a Bachelor of Science in Electronics and
+            Communications Engineering student at Iloilo Science and Technology
+            University, nearing graduation. Studying ECE has taught me not just
+            technical skills, but also the value of consistency, adaptability,
+            and determination in facing difficult situations. I chose to
+            continue this path and see it through, even when it demanded more
+            than expected, because I believe growth often comes from the things
+            that test us the most.
+          </p>
+        </div>
+
+        <!-- IMAGE SIDE -->
+        <div class="about-image">
+          <img src="img/dp.png" alt="About Image" />
+        </div>
+      </div>
+
+      <!-- about me imgs -->
+      <div class="box-wrapper">
+        <div class="box-scroll-container">
+          <div class="box">
+            <img src="img/chess.jpg" alt="" />
+            <div class="box-text">Chess</div>
+          </div>
+
+          <div class="box">
+            <img src="img/electronics.png" alt="" />
+            <div class="box-text">Electronics</div>
+          </div>
+
+          <div class="box">
+            <img src="img/volleyball.jpg" alt="" />
+            <div class="box-text">Volleyball</div>
+          </div>
+
+          <div class="box">
+            <img src="img/basketball.jpg" alt="" />
+            <div class="box-text">Basketball</div>
+          </div>
+
+          <div class="box">
+            <img src="img/taurus.png" alt="" />
+            <div class="box-text">Zodiac</div>
+          </div>
+        </div>
       </div>
     </div>
-  </a>
+    <!-- end about me section -->
 
-  <a href="#" class="box-link">
-    <div class="box">
-      <div class="title">Projects</div>
-      <div class="desc">
-        RC car<br>
-        FPGA Games
+    <!-- PROJECTS SECTION -->
+    <div id="projects" class="section">
+      <h2>Projects</h2>
+      <div class="projects-row">
+        <div class="project-box">
+          <img src="img/p1.jpg" alt="Project 1" />
+          <h3>RC Car</h3>
+        </div>
+
+        <div class="project-box">
+          <img src="img/p2.jpg" alt="Project 2" />
+          <h3>FPGA Games</h3>
+        </div>
       </div>
     </div>
-  </a>
+    <br />
+    <br />
+    <br />
+    <br />
 
-</div>
+    <!-- CONTACT SECTION -->
+    <div id="contact" class="section">
+      <h2>Contact</h2>
+
+      <div class="contact-row">
+        <div class="contact-item">
+          <span>📞</span>
+          <p>+63 9507390732</p>
+        </div>
+
+        <div class="contact-item">
+          <span>📧</span>
+          <p>noblezaharvy@gmail.com</p>
+        </div>
+
+        <div class="contact-item">
+          <span>📍</span>
+          <p>Binaba-an Tirador, Lambunao, Iloilo, Philippines</p>
+        </div>
+      </div>
     </div>
+
+    <footer class="footer">
+      <p>Submitted to: Engr. Arnel De Castro</p>
+    </footer>
   </body>
 </html>
